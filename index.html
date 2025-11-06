@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nagarjuna Reddy Gujjula — Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --bg-dark: #0b0b0e;
@@ -55,7 +56,7 @@
       color: transparent;
       min-height: 40px;
     }
-    header p { font-size: 1.1rem; color: #b0b0b0; }
+    header p { font-size: 1.1rem; color: #808080; }
     .btn {
       display: inline-block;
       margin: 15px 8px;
@@ -70,24 +71,134 @@
     .btn:hover { transform: scale(1.05); }
 
     nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      gap: 20px;
       position: sticky;
       top: 0;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      z-index: 20;
+      z-index: 50;
+      background: #0b0b0e;
+      color: white;
+      transition: background 0.4s ease, color 0.4s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
-    nav a {
-      color: #ccc;
+    body.light nav {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 5%;
+    }
+
+    .logo-name {
+      position: relative;
+      font-weight: 900;
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
+      color: white;
+      z-index: 2;
+    }
+
+    .logo-name::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: 140%;
+      transform: translate(-50%, -50%) rotate(-5deg);
+      background: radial-gradient(circle at top left, #a855f7, #ec4899, #f97316);
+      filter: blur(30px);
+      border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+      z-index: -1;
+      opacity: 0.65;
+      animation: float 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) rotate(-5deg) scale(1); }
+      100% { transform: translate(-50%, -52%) rotate(5deg) scale(1.1); }
+    }
+
+    body.light .logo-name {
+      color: black;
+    }
+    body.light .logo-name::before {
+      background: radial-gradient(circle at bottom right, #14b8a6, #3b82f6, #facc15);
+      opacity: 0.5;
+    }
+
+
+    .nav-center {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-center a {
+      color: inherit;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.3s, transform 0.3s;
     }
-    nav a:hover { color: white; }
-    .theme-toggle { cursor: pointer; font-size: 1.4rem; }
+
+    .nav-center a:hover {
+      color: #f97316;
+      transform: scale(1.08);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* Let's Talk button */
+    .nav-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-btn:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      transition: background 0.4s ease, transform 0.4s ease;
+    }
+    .theme-toggle svg {
+      width: 22px;
+      height: 22px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+      transition: stroke 0.4s ease;
+    }
+
+    body.light .theme-toggle {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    body.light .theme-toggle svg {
+      stroke: #000;
+    }
+
 
     section {
       padding: 80px 10%;
@@ -95,14 +206,226 @@
       margin: auto;
     }
     h2 {
+    position: relative;
+      display: inline-block;
       font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 30px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin: 0 auto 40px;
+      text-align: center;
       background: var(--primary);
       -webkit-background-clip: text;
       color: transparent;
-      text-align: center;
+      z-index: 1;
     }
+
+    /* Create the centered glowing blob behind the heading */
+    h2::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-5deg);
+      width: 20%;          /* ↓ was 130% — reduced width */
+      height: 30%;        /* ↓ was 150% — reduced height */
+      background: radial-gradient(circle at center, #a855f7, #ec4899, #f97316);
+      filter: blur(18px);  /* ↓ less blur for a smaller, tighter glow */
+      border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+      z-index: -1;
+      opacity: 0.45;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+
+
+    /* Animation for subtle floating glow */
+    @keyframes blobFloat {
+      0% { transform: translate(-50%, -50%) rotate(-5deg) scale(1); }
+      100% { transform: translate(-50%, -52%) rotate(5deg) scale(1.08); }
+    }
+
+    /* Light mode adjustment */
+    body.light h2::before {
+      background: radial-gradient(circle at center, #14b8a6, #3b82f6, #facc15);
+      opacity: 0.4;
+    }
+
+    section h2{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    footer p:first-child {
+      background: var(--primary);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .contact {
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .contact-intro {
+      color: #aaa;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 40px 30px;
+      text-align: left;
+      transition: background 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    body.light .contact-card {
+      background: #fff;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    }
+
+    .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .contact-card .note {
+      color: #aaa;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    /* Contact Info items */
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    body.light .icon-box {
+      background: linear-gradient(135deg, #14b8a6, #3b82f6, #facc15);
+    }
+    .icon-box:hover {
+      transform: scale(1.1);
+    }
+
+    .label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .info-item a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    body.light .info-item a { color: #111; }
+    .info-item a:hover {
+      color: #ec4899;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 25px 0;
+    }
+    body.light .divider { background: rgba(0,0,0,0.1); }
+
+    .social-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    body.light .social-btn { color: #000; }
+    .social-btn:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Send Message form */
+    .message-card form {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .message-card input, .message-card textarea {
+      background: #1c1c1f;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      color: white;
+      font-size: 1rem;
+    }
+    body.light .message-card input,
+    body.light .message-card textarea {
+      background: #f1f5f9;
+      color: #000;
+    }
+    .message-card textarea { min-height: 120px; resize: vertical; }
+
+    .submit-btn {
+      border: none;
+      border-radius: 30px;
+      padding: 12px 20px;
+      font-weight: 700;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .submit-btn:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+
 
     .about { text-align: center; }
     .about p { font-size: 1.25rem; }
@@ -137,17 +460,33 @@
 </head>
 <body>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#contact">Contact</a>
-    <span class="theme-toggle" id="themeToggle">🌙</span>
+    <div class="nav-container">
+      <div class="nav-left">
+        <span class="logo-name">Nagarjuna Reddy Gujjula</span>
+      </div>
+      <div class="nav-center">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="#contact" class="nav-btn">Let's Talk</a>
+        <div class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
   </nav>
 
+
+
   <header id="home">
-    <img src="profile-placeholder.png" alt="Profile Picture" class="profile-pic">
+    <img src="profilepic.jpg" alt="Profile Picture" class="profile-pic">
     <h1>I'm Nagarjuna Reddy Gujjula</h1>
     <p class="role" id="roleText">Full Stack Developer</p>
     <p>I am a Full Stack Software Engineer with 4+ years of experience specializing in Java, Spring Boot, React, and Cloud (AWS/GCP/Azure).</p>
@@ -181,14 +520,14 @@
         <p>Delivered enterprise web apps and improved backend resilience and CI/CD pipelines.</p>
       </div>
       <div class="exp-card">
-        <h3>Java Developer — Allstate</h3>
-        <p>Hyderabad, India · Jun 2020 – Jun 2021</p>
-        <p>Built insurance web apps using Spring Boot, JSP, and Servlets with REST/GraphQL integrations.</p>
-      </div>
-      <div class="exp-card">
         <h3>Full Stack Java Developer — PwC Acceleration Center</h3>
         <p>Hyderabad, India · Aug 2021 – Aug 2022</p>
         <p>Developed REST APIs, frontends, and automated CI/CD pipelines using Jenkins and Maven.</p>
+      </div>
+      <div class="exp-card">
+        <h3>Java Developer — Allstate</h3>
+        <p>Hyderabad, India · Jun 2020 – Jun 2021</p>
+        <p>Built insurance web apps using Spring Boot, JSP, and Servlets with REST/GraphQL integrations.</p>
       </div>
     </div>
   </section>
@@ -197,12 +536,14 @@
     <h2>Education</h2>
     <div class="experience">
       <div class="exp-card">
-        <h3>MS, Computer Science — California State University, Sacramento</h3>
-        <p>Dec 2024</p>
+        <h3>Master of Science in Computer Science</h3>
+        <h4>California State University, Sacramento, CA</h4>
+        <p>Aug 2022 – Dec 2024</p>
       </div>
       <div class="exp-card">
-        <h3>BS, Computer Science — KL University, India</h3>
-        <p>May 2022</p>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <h4>K L University, Vijayawada, India</h4>
+        <p>Aug 2018 – May 2022</p>
       </div>
     </div>
   </section>
@@ -242,44 +583,128 @@
 
   <section id="contact" class="contact">
     <h2>Let's Talk</h2>
+    <p class="contact-intro">
+      I'm currently looking for new opportunities, and my inbox is always open.
+      Whether you have a question, opportunity, or just want to say hi — you can contact me here.
+    </p>
+
     <div class="contact-grid">
-      <div class="contact-left">
-        <h3>I'm currently looking for new opportunities!</h3>
-        <p>Whether you have a question, opportunity, or just want to say hi, I'll get back to you.</p>
-        <div>📧 <a href="mailto:nagarjunagujjula2907@gmail.com">nagarjunagujjula2907@gmail.com</a></div>
-        <div>📞 +1 (279)-275-7623</div>
-        <div>📍 Sacramento, California, USA</div>
-        <div>🐙 <a href="https://github.com/Nagarjuna818">/Nagarjuna818</a></div>
-        <div>💼 <a href="https://www.linkedin.com/in/nagarjunagujjula/">/in/nagarjunagujjula</a></div>
+      <!-- LEFT CARD: CONTACT INFO -->
+      <div class="contact-card info-card">
+        <h3>Contact Info</h3>
+        <p class="note">Reach out through any of these channels</p>
+
+        <div class="info-item">
+          <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <p class="label">Email</p>
+            <a href="mailto:nagarjunagujjula2907@gmail.com">nagarjunagujjula2907@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <p class="label">Phone</p>
+            <a href="tel:+12792757623">+1 279-275-7623</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <p class="label">Location</p>
+            <a href="https://maps.google.com/?q=Sacramento,California" target="_blank">Sacramento, California, USA</a>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="label">Connect with me</p>
+        <div class="social-buttons">
+          <a href="https://github.com/Nagarjuna818" target="_blank" class="social-btn">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/nagarjunagujjula/" target="_blank" class="social-btn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
       </div>
-      <div class="contact-right">
+
+      <!-- RIGHT CARD: SEND MESSAGE -->
+      <div class="contact-card message-card">
+        <h3>Send Message</h3>
+        <p class="note">Fill out the form below and I'll get back to you</p>
         <form action="mailto:nagarjunagujjula2907@gmail.com" method="post" enctype="text/plain">
-          <label>Your Name</label>
-          <input type="text" name="name" placeholder="Enter your name" required>
-          <label>Your Email</label>
-          <input type="email" name="email" placeholder="Enter your email" required>
-          <label>Write your Message here</label>
-          <textarea name="message" placeholder="Enter your message" required></textarea>
-          <button class="submit-btn" type="submit">Submit Now</button>
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+
+          <label>Email</label>
+          <input type="email" name="email" placeholder="your.email@example.com" required>
+
+          <label>Subject</label>
+          <input type="text" name="subject" placeholder="What's this about?" required>
+
+          <label>Message</label>
+          <textarea name="message" placeholder="Your message..." required></textarea>
+
+          <button class="submit-btn" type="submit">Submit</button>
         </form>
       </div>
     </div>
   </section>
 
+
+
   <script>
     const toggle = document.getElementById('themeToggle');
-    toggle.addEventListener('click', ()=>{
+    const icon = document.getElementById('themeIcon');
+    toggle.addEventListener('click', () => {
       document.body.classList.toggle('light');
-      toggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+      if (document.body.classList.contains('light')) {
+        // Switch to sun
+        icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+      } else {
+        // Switch to moon
+        icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+      }
     });
+
 
     const roles = ['Full Stack Developer', 'Backend Engineer', 'Software Engineer'];
     let roleIndex = 0;
-    function rotateRole() {
-      document.getElementById('roleText').textContent = roles[roleIndex];
-      roleIndex = (roleIndex + 1) % roles.length;
+    let charIndex = 0;
+    let isDeleting = false;
+    const roleElement = document.getElementById('roleText');
+
+    function typeWriter() {
+      const currentRole = roles[roleIndex];
+      // update text
+      roleElement.textContent = currentRole.substring(0, charIndex);
+
+      if (!isDeleting && charIndex < currentRole.length) {
+        charIndex++;
+        setTimeout(typeWriter, 100); // typing speed
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeWriter, 50); // deleting speed
+      } else {
+        // finished typing or deleting
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeWriter, 1200); // pause before deleting
+        } else {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(typeWriter, 300); // pause before next role
+        }
+      }
     }
-    setInterval(rotateRole, 2500);
+    typeWriter();
   </script>
+    <footer style="text-align:center; padding:30px 0; color:#aaa; font-size:0.95rem;">
+    <p>© 2025 Nagarjuna Reddy Gujjula. All rights reserved.</p>
+    <p>Built with HTML, CSS, and JavaScript.</p>
+  </footer>
 </body>
 </html>
