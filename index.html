@@ -456,6 +456,190 @@
     textarea { min-height: 120px; resize: vertical; }
     .submit-btn { border: none; border-radius: 30px; padding: 12px 20px; font-weight: 700; background: var(--primary); color: white; cursor: pointer; }
     .submit-btn:hover { transform: scale(1.05); }
+
+    /* 📱 Mobile & Tablet Responsiveness */
+@media (max-width: 1024px) {
+  header h1 {
+    font-size: 2.3rem;
+  }
+  .role {
+    font-size: 1.3rem;
+  }
+  section {
+    padding: 60px 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  .nav-center {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .nav-center a {
+    font-size: 1rem;
+  }
+  .logo-name {
+    font-size: 1.4rem;
+  }
+  .nav-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* Header */
+  header {
+    padding: 80px 10px 40px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .role {
+    font-size: 1.2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .profile-pic {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* About Section */
+  .about p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+  .skills {
+    gap: 10px;
+  }
+  .skill {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  /* Experience & Education Cards */
+  .experience {
+    grid-template-columns: 1fr;
+  }
+  .exp-card {
+    padding: 20px;
+  }
+  .exp-card h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Projects */
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .project {
+    padding: 18px;
+  }
+  .project h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Certifications */
+  .certifications {
+    grid-template-columns: 1fr;
+  }
+  .cert {
+    padding: 20px;
+  }
+
+  /* Contact Section */
+  .contact-intro {
+    font-size: 0.95rem;
+    padding: 0 10px;
+    margin-bottom: 30px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .contact-card {
+    padding: 25px 20px;
+  }
+  .contact-card h3 {
+    font-size: 1.3rem;
+  }
+  .info-item {
+    gap: 10px;
+  }
+  .icon-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+  .social-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .social-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .message-card input,
+  .message-card textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+  .submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.85rem;
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+  .role {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .about p {
+    font-size: 0.95rem;
+  }
+  .skill {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+  .nav-center a {
+    font-size: 0.9rem;
+  }
+  .nav-btn {
+    font-size: 0.8rem;
+    padding: 6px 15px;
+  }
+  .contact-card h3 {
+    font-size: 1.2rem;
+  }
+  .note {
+    font-size: 0.85rem;
+  }
+}
+
   </style>
 </head>
 <body>
